@@ -1,16 +1,13 @@
-public class Kata
-{
-  public static String reverseWords(final String original)
-  {
-    String[] arr=original.split(" ");
-    if(arr.length==0)
-       return original;
-    String result="";
-    for(String word:arr){
-         StringBuilder input = new StringBuilder();
-         result+=input.append(word).reverse().toString()+" ";
-     }
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-     return result.trim();
-  }
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String original = sc.nextLine();
+        System.out.println(Arrays.stream(original.split("(?<=\\s)|(?=\\s+)"))
+                .map(str -> new StringBuilder(str).reverse().toString())
+                .collect(Collectors.joining()));
+    }
 }
